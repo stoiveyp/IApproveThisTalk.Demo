@@ -1,22 +1,15 @@
-﻿using IApproveThisTalk.Demo.Demo;
+﻿using System.IO;
+using System.Linq;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using Slack.NetStandard.Interaction;
 
 namespace IApproveThisTalk.Demo.BreakGlass
 {
     [ApiController]
-    [Route("breakglass/A")]
-    public class A_SlashCommand:ControllerBase
+    [Route("slack/commands")]
+    [SlackAuth]
+    public class A_SlashCommand : ControllerBase
     {
-
-        private readonly ILogger<InteractionController> _logger;
-
-        public A_SlashCommand(ILogger<InteractionController> logger)
-        {
-            _logger = logger;
-        }
-
         [HttpGet]
         public ActionResult Get()
         {
@@ -24,11 +17,20 @@ namespace IApproveThisTalk.Demo.BreakGlass
         }
 
         [HttpPost]
-        public ActionResult Post(InteractionPayload payload)
+        public ActionResult Post()
         {
-            return payload switch
+            SlashCommand slashCommand;
+            string text = string.Empty;
+            using (var sr = new StreamReader(Request.Body))
             {
-                _ => new OkObjectResult("Unsupported - sorry!")
+                text = sr.ReadToEnd();
+                slashCommand = new SlashCommand(text);
+            }
+
+            return slashCommand.Command.Substring(1).ToLower() switch
+            {
+                "approve" => new OkObjectResult("Approved!"),
+                _ => new OkObjectResult("Unsupported command - sorry!")
             };
         }
     }

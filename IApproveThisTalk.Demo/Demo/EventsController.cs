@@ -26,8 +26,14 @@ namespace IApproveThisTalk.Demo.Demo
             return eventPayload switch
             {
                 EventCallback callback => CallbackResponse(callback),
+                UrlVerification verification => VerificationResponse(verification),
                 _ => new OkResult()
             };
+        }
+
+        private ActionResult VerificationResponse(UrlVerification verification)
+        {
+            return new OkObjectResult(verification.Challenge);
         }
 
         private ActionResult CallbackResponse(EventCallback callback)

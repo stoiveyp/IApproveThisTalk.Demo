@@ -30,7 +30,7 @@
       "commandName": "Docker",
       "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}/weatherforecast",
       "environmentVariables": {
-        "signing_secret": "xxxx"
+        "signing_secret": "3b37a0de0c0fd46b824c1880513291f2"
       },
       "publishAllPorts": true,
       "useSSL": true

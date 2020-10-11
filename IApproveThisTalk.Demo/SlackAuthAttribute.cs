@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -45,9 +46,10 @@ namespace IApproveThisTalk.Demo
             request.EnableBuffering();
 
             string body;
-            using (var reader = new StreamReader(request.Body))
+            using (var reader = new StreamReader(request.Body,leaveOpen:true))
             {
                 body = await reader.ReadToEndAsync();
+                request.Body.Position = 0;
             }
 
             if (!Verifier.Verify(request.Headers[SignatureHeader], timestamp, body))
