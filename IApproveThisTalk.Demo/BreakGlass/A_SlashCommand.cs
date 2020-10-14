@@ -6,7 +6,7 @@ using Slack.NetStandard.Interaction;
 namespace IApproveThisTalk.Demo.BreakGlass
 {
     [ApiController]
-    [Route("slack/commands")]
+    [Route("slack/temp_A")]
     [SlackAuth]
     public class A_SlashCommand : ControllerBase
     {
