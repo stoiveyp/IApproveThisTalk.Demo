@@ -9,7 +9,7 @@ using Slack.NetStandard.WebApi.Chat;
 namespace IApproveThisTalk.Demo.BreakGlass
 {
     [ApiController]
-    [Route("slack/temp_B")]
+    [Route("slack/b_sendmessage")]
     [SlackAuth]
     public class B_SendMessage: ControllerBase
     {

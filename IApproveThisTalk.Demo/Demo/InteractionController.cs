@@ -6,7 +6,7 @@ using Slack.NetStandard.Interaction;
 namespace IApproveThisTalk.Demo.Demo
 {
     [ApiController]
-    [Route("slack/temp_int")]
+    [Route("slack/interaction")]
     [SlackAuth]
     public class InteractionController : ControllerBase
     {

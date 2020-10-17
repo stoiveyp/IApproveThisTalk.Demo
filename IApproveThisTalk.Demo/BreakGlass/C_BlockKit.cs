@@ -13,7 +13,7 @@ using Slack.NetStandard.WebApi.Chat;
 namespace IApproveThisTalk.Demo.BreakGlass
 {
     [ApiController]
-    [Route("slack/commands")]
+    [Route("slack/c_blockkit")]
     [SlackAuth]
     public class C_BlockKit : ControllerBase
     {
