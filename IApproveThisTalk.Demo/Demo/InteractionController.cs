@@ -1,11 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Slack.NetStandard.Interaction;
 
 namespace IApproveThisTalk.Demo.Demo
 {
     [ApiController]
-    [Route("slack/interaction")]
+    [Route("slack/temp_int")]
     [SlackAuth]
     public class InteractionController : ControllerBase
     {
@@ -23,7 +24,7 @@ namespace IApproveThisTalk.Demo.Demo
         }
 
         [HttpPost]
-        public ActionResult Post(InteractionPayload payload)
+        public async Task<ActionResult> Post(InteractionPayload payload)
         {
             return payload switch
             {

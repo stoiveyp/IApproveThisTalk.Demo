@@ -10,6 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Slack.NetStandard;
 
 namespace IApproveThisTalk.Demo
 {
@@ -25,6 +26,9 @@ namespace IApproveThisTalk.Demo
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            var token = Environment.GetEnvironmentVariable("oauth_token");
+            var api = new SlackWebApiClient(token);
+            services.AddSingleton<ISlackApiClient>(api);
             services.AddControllers();
         }
 

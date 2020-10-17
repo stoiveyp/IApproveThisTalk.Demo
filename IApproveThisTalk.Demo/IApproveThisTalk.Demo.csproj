@@ -8,7 +8,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.10.9" />
-    <PackageReference Include="Slack.NetStandard" Version="2.5.1" />
+    <PackageReference Include="Slack.NetStandard" Version="2.7.0" />
   </ItemGroup>
 
 

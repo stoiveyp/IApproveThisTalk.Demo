@@ -20,11 +20,9 @@ namespace IApproveThisTalk.Demo.BreakGlass
         public ActionResult Post()
         {
             SlashCommand slashCommand;
-            string text = string.Empty;
             using (var sr = new StreamReader(Request.Body))
             {
-                text = sr.ReadToEnd();
-                slashCommand = new SlashCommand(text);
+                slashCommand = new SlashCommand(sr.ReadToEnd());
             }
 
             return slashCommand.Command.Substring(1).ToLower() switch

@@ -3,7 +3,7 @@
 namespace IApproveThisTalk.Demo
 {
     [ApiController]
-    [Route("slack/commands")]
+    [Route("slack/temp")]
     [SlackAuth]
     public class CommandController:ControllerBase
     {
