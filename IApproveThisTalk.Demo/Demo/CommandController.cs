@@ -1,7 +1,4 @@
-﻿using System.Linq;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Slack.NetStandard.Interaction;
+﻿using Microsoft.AspNetCore.Mvc;
 
 namespace IApproveThisTalk.Demo
 {
