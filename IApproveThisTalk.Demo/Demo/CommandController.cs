@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Slack.NetStandard.Interaction;
 
 namespace IApproveThisTalk.Demo
 {
@@ -15,7 +14,8 @@ namespace IApproveThisTalk.Demo
         }
 
         [HttpPost]
-        public ActionResult Post(SlashCommand slashCommand)
+        [Consumes("application/x-www-form-urlencoded")]
+        public ActionResult Post()
         {
             return new OkObjectResult("Unsupported - sorry!");
         }
