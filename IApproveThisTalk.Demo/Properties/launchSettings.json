@@ -34,7 +34,7 @@
       "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}/weatherforecast",
       "environmentVariables": {
         "signing_secret": "3b37a0de0c0fd46b824c1880513291f2",
-        "oauth_token": "xoxb-8595513927-1426965196196-ilFQRNRl4jLj5sNgThhjgqeH"
+        "oauth_token": "xoxb-8595513927-1426965196196-wzqSOGwwYVSwbChiBu61RL1g"
       },
       "publishAllPorts": true,
       "useSSL": true,

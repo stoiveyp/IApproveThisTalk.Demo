@@ -60,7 +60,7 @@ namespace IApproveThisTalk.Demo.Demo
                 Channel = "C01C9M0DAMB",
                 Blocks = GenerateApproval(submission)
             };
-            var response = await _webapi.Chat.Post(request);
+            await _webapi.Chat.Post(request);
             var channel = await GetDirectChannel(submission.User.ID);
             await _webapi.Chat.Post(new PostMessageRequest
             {

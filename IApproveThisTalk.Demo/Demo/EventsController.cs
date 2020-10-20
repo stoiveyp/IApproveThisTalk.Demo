@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Slack.NetStandard.EventsApi;
 using Slack.NetStandard.EventsApi.CallbackEvents;
-using Slack.NetStandard.WebApi.Auth;
 
 namespace IApproveThisTalk.Demo.Demo
 {
@@ -21,11 +17,11 @@ namespace IApproveThisTalk.Demo.Demo
         }
 
         [HttpPost]
-        public ActionResult Post(Event eventPayload)
+        public async Task<ActionResult> Post(Event eventPayload)
         {
             return eventPayload switch
             {
-                EventCallback callback => CallbackResponse(callback),
+                EventCallback callback => await CallbackResponse(callback),
                 UrlVerification verification => VerificationResponse(verification),
                 _ => new OkResult()
             };
@@ -36,12 +32,23 @@ namespace IApproveThisTalk.Demo.Demo
             return new OkObjectResult(verification.Challenge);
         }
 
-        private ActionResult CallbackResponse(EventCallback callback)
+        private async Task<ActionResult> CallbackResponse(EventCallback callback)
         {
             return callback.Event switch
             {
+                WorkflowStepExecute execute => await WorkflowExecute(execute),
                 _ => new OkResult()
             };
+        }
+
+        private async Task<ActionResult> WorkflowExecute(WorkflowStepExecute execute)
+        {
+            if (execute.CallbackId != "approval_author")
+            {
+                return new OkResult();
+            }
+
+            return new OkResult();
         }
     }
 }

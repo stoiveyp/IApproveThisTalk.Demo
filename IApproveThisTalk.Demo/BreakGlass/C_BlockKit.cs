@@ -34,10 +34,9 @@ namespace IApproveThisTalk.Demo.BreakGlass
         public async Task<ActionResult> Post()
         {
             SlashCommand slashCommand;
-            string text = string.Empty;
             using (var sr = new StreamReader(Request.Body))
             {
-                text = await sr.ReadToEndAsync();
+                var text = await sr.ReadToEndAsync();
                 slashCommand = new SlashCommand(text);
             }
 
@@ -75,7 +74,7 @@ namespace IApproveThisTalk.Demo.BreakGlass
                 Channel = "C01C9M0DAMB",
                 Blocks = GenerateApproval(command)
             };
-            var response = await _webapi.Chat.Post(request);
+            await _webapi.Chat.Post(request);
             return new OkObjectResult($"Your approval request for {command.Text} has been sent");
         }
     }

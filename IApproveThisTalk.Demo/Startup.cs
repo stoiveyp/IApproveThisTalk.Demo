@@ -29,7 +29,7 @@ namespace IApproveThisTalk.Demo
             var token = Environment.GetEnvironmentVariable("oauth_token");
             var api = new SlackWebApiClient(token);
             services.AddSingleton<ISlackApiClient>(api);
-            services.AddControllers();
+            services.AddControllers().AddNewtonsoftJson();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
